@@ -116,7 +116,7 @@ runs:
       with:
         ref: ${{ inputs.head-ref }}
 
-    - uses: cloudposse-github-actions/install-gh-releases@v1
+    - uses: nsx-actions/cloudposse-github-actions_install-gh-releases@v1
       if: ${{ inputs.install-jq == 'true' }}
       with:
         cache: true
@@ -124,7 +124,7 @@ runs:
           jqlang/jq: jq-${{ inputs.jq-version }}
 
     - if: ${{ inputs.install-atmos == 'true' }}
-      uses: cloudposse/github-action-setup-atmos@v2
+      uses: nsx-actions/cloudposse_github-action-setup-atmos@v2
       with:
         atmos-version: ${{ inputs.atmos-version }}
         install-wrapper: false
@@ -153,7 +153,7 @@ runs:
         terraform_wrapper: false
 
     - name: Install OpenTofu
-      uses: cloudposse-github-actions/install-gh-releases@v1
+      uses: nsx-actions/cloudposse-github-actions_install-gh-releases@v1
       if: ${{ steps.config.outputs.opentofu-version != '' && steps.config.outputs.opentofu-version != 'null' }}
       with:
         cache: true
@@ -236,7 +236,7 @@ runs:
       run: |-
         cat "${GITHUB_ACTION_PATH}/assets/summary.md" >> $GITHUB_STEP_SUMMARY
 
-    - uses: cloudposse/github-action-matrix-extended@v0
+    - uses: nsx-actions/cloudposse_github-action-matrix-extended@v0
       id: matrix
       if: ${{ inputs.atmos-pro-upload == 'false' }}
       with:
